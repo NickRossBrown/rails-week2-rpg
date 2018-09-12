@@ -1,0 +1,9 @@
+<h1>User Account</h1>
+
+<h3><%=@user.username%></h3>
+<h3><%=@user.email%></h3>
+<hr>
+<h3><%= link_to "update account info", edit_user_path %></h3>
+<h3><%= link_to "Delete List", user_path(@user),
+                                :data => {:confirm => "Are you sure?",
+                                            :method => "delete"} %></h3>

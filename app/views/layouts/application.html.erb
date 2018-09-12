@@ -8,21 +8,22 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-  <header class="navbar navbar-fixed-top">
-    <div class="container">
-      <% if current_user %>
-        <%= current_user.username %> | <%= link_to "Sign out", "/signout" %>
-      <% else %>
-        <%= link_to "Sign up", 'signup' %> | <%= link_to "Sign in", '/signin' %>
-      <% end %>
 
-    </div>
-  </header>
   <body>
+    <div class="container">
+      <header class="navbar navbar-fixed-top">
 
-    <%= flash[:alert] %>
-    <%= flash[:notice] %>
+          <% if current_user %>
+            <%= current_user.username %> | <%= link_to "My Account", user_path(current_user.id)%> | <%= link_to "Sign out", "/signout" %>
+          <% else %>
+            <%= link_to "Sign up", 'signup' %> | <%= link_to "Sign in", '/signin' %>
+          <% end %>
+          <%= flash[:alert] %>
+          <%= flash[:notice] %>
+      </header>
 
-    <%= yield %>
+
+      <%= yield %>
+    </div>
   </body>
 </html>

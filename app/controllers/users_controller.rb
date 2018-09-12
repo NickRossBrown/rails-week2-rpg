@@ -15,6 +15,31 @@ class UsersController < ApplicationController
     end
   end
 
+  def show
+    @user = User.find(session[:user_id])
+  end
+
+  def edit
+    @user = User.find(session[:user_id])
+  end
+
+  def update
+    @user = User.find(session[:user_id])
+    if @user.update(user_params)
+      # @user.save
+      render :show
+    else
+      render :edit
+    end
+  end
+
+  def destroy
+    @user = User.find(session[:user_id])
+    @user.destroy
+    session[:user_id] = nil
+    redirect_to '/signin'
+  end
+
   private
 
   def user_params
