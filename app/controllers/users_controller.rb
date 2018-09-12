@@ -11,7 +11,7 @@ class UsersController < ApplicationController
       redirect_to '/'
     else
       flash[:alert] = 'There was a problem signing up'
-      redirect_to '/signup'
+      redirect_to users_path
     end
   end
 
@@ -43,6 +43,6 @@ class UsersController < ApplicationController
   private
 
   def user_params
-    params.require(:user).permit(:username, :email, :password, :password_confirmation)
+    params.require(:user).permit(:username, :email, :password, :password_confirmation, :image)
   end
 end
