@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Rpg</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+  <header class="navbar navbar-fixed-top">
+    <div class="container">
+      <% if current_user %>
+        <%= current_user.username %> | <%= link_to "Sign out", "/signout" %>
+      <% else %>
+        <%= link_to "Sign up", 'signup' %> | <%= link_to "Sign in", '/signin' %>
+      <% end %>
+
+    </div>
+  </header>
+  <body>
+
+    <%= flash[:alert] %>
+    <%= flash[:notice] %>
+
+    <%= yield %>
+  </body>
+</html>
