@@ -26,7 +26,6 @@ class UsersController < ApplicationController
   def update
     @user = User.find(session[:user_id])
     if @user.update(user_params)
-      # @user.save
       render :show
     else
       render :edit
@@ -45,4 +44,5 @@ class UsersController < ApplicationController
   def user_params
     params.require(:user).permit(:username, :email, :password, :password_confirmation, :image)
   end
+
 end
