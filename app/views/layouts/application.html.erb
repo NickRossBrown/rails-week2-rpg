@@ -14,7 +14,7 @@
       <header class="navbar navbar-fixed-top">
 
 
-          <% if is_admin? %>
+          <% if current_user  && is_admin? %>
             <%= current_user.username %> | GOD  STATUS | <%= link_to 'Admin', admin_path %> | <%= link_to "My Account", user_path(current_user.id) %> | <%= link_to "Sign out", "/signout" %>
           <% elsif current_user %>
             <%= current_user.username %> | <%= link_to "My Account", user_path(current_user.id)%> | <%= link_to "Sign out", "/signout" %>
